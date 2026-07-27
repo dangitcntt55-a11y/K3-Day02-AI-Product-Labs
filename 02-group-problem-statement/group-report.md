@@ -14,7 +14,7 @@
 | 8 | Dương Mạnh Phong | 2A202601557 | Thành viên |
 | 9 | Cao Nhật Minh | 2A202601721 | Thành viên |
 
-> Ghi chú: nhóm đã cung cấp candidate được chọn và baseline sơ bộ “chờ 2–3 ngày/yêu cầu”. Chưa có biên bản pitch các candidate còn lại, interview, survey hoặc ticket log. Báo cáo đánh dấu rõ các phần chưa có thay vì tự tạo dữ liệu validation.
+> Ghi chú: nhóm đã tổng hợp đủ 12 candidate và chọn đề tài Text-to-SQL. Baseline “chờ 2–3 ngày/yêu cầu” hiện là ước lượng từ Quick Problem Card; chưa có interview, survey hoặc ticket log nội bộ. Báo cáo dùng research bên ngoài để kiểm chứng problem class/solution pattern, đồng thời giữ các số liệu nội bộ chưa đo ở trạng thái giả thuyết.
 
 ---
 
@@ -22,47 +22,82 @@
 
 ## Bước 3.1 — Trình bày top 3
 
-Nhóm chưa cung cấp danh sách đầy đủ 9–12 candidate problems. Bảng dưới đây chỉ ghi candidate đã được xác nhận:
+Nhóm đã tổng hợp 12 candidate problems từ các thành viên:
 
 | # | Người đưa ra | Candidate problem | Người gặp vấn đề | Điểm nghẽn | Cảm nhận nhanh |
 |---:|---|---|---|---|---|
-| 1 | Nhóm | Nhân viên nghiệp vụ phải chờ vài ngày để nhận số liệu bán hàng/tồn kho từ đội Data | Sales, Sales Operations, Quản lý kinh doanh và Data Analyst | Làm rõ yêu cầu → tìm schema/KPI → viết và kiểm tra SQL → trả kết quả | Workflow / LLM Feature + Semantic RAG + SQL Guardrails |
-| 2 | Chưa cung cấp |  |  |  |  |
-| 3 | Chưa cung cấp |  |  |  |  |
-| 4 | Chưa cung cấp |  |  |  |  |
-| 5 | Chưa cung cấp |  |  |  |  |
-| 6 | Chưa cung cấp |  |  |  |  |
-| 7 | Chưa cung cấp |  |  |  |  |
-| 8 | Chưa cung cấp |  |  |  |  |
-| 9 | Chưa cung cấp |  |  |  |  |
-| 10 | Chưa cung cấp |  |  |  |  |
-| 11 | Chưa cung cấp |  |  |  |  |
-| 12 | Chưa cung cấp |  |  |  |  |
+| 1 | Dương Văn Vũ| Nhân viên nghiệp vụ phải chờ vài ngày để nhận số liệu bán hàng/tồn kho từ đội Data | Sales, Sales Operations, Quản lý kinh doanh và Data Analyst | Làm rõ yêu cầu → tìm schema/KPI → viết và kiểm tra SQL → trả kết quả | Workflow / LLM Feature + Semantic RAG + SQL Guardrails |
+| 2 | Cao Nhật Minh | Người nhận cuộc gọi/tin nhắn đáng ngờ khó kiểm tra nhanh danh tính và dấu hiệu lừa đảo trước khi cung cấp thông tin hoặc chuyển tiền | Người dùng điện thoại/Internet tại Việt Nam, ưu tiên người lớn tuổi hoặc người ít kỹ năng số | Bước 2–4: tự đánh giá, tìm thông tin và xác minh nhưng không có checklist thống nhất; có thể tiếp tục tương tác với chính nguồn giả mạo | Workflow — rule/checklist là lớp chính; AI giải thích dấu hiệu; người dùng xác minh qua kênh chính thức |
+| 3 | Cao Nhật Minh | Người mua thực phẩm không nhìn thấy đầy đủ món đang có và hạn dùng nên mua trùng hoặc phát hiện quá muộn, dẫn đến phải bỏ đi | Người chịu trách nhiệm mua và chuẩn bị thực phẩm cho hộ gia đình | Bước 3–4: thông tin món đang có và thời điểm nên dùng không xuất hiện đúng lúc lập danh sách mua hoặc chọn bữa | Workflow — khay “dùng trước” và reminder theo rule; AI chỉ gợi ý cách sử dụng nguyên liệu |
+| 4 | Cao Nhật Minh | Người dùng thuốc dài hạn có thể quên một lần dùng thuốc hoặc không nhớ mình đã dùng chưa, trong khi người thân thiếu thông tin để nhắc đúng lúc | Người trưởng thành dùng thuốc dài hạn theo đơn và người thân hỗ trợ | Bước 2–4: nhắc giờ không gắn với xác nhận “đã dùng/chưa dùng”, và dữ liệu không được lưu thành lịch sử đơn giản | Rule — lịch nhắc và xác nhận là logic xác định; AI không cần thiết cho lõi, chỉ hỗ trợ nhập liệu và phải có người kiểm tra |
+| 5 | Nguyễn Nam Anh | BA Intern mất 4–6 tiếng để viết chi tiết Use Case và tài liệu URD/SRS cho một tính năng do hay “bí ý tưởng” và bỏ sót các trường hợp ngoại lệ (Edge Cases) | BA Intern, PO mentor | Mất 4–6 tiếng/tính năng do bí ý tưởng; dễ bỏ sót các luồng lỗi và Edge Cases | Workflow — AI gợi ý luồng lỗi; BA review và chốt |
+| 6 |Nguyễn Nam Anh | BA Intern nộp báo cáo phân tích thiếu logic thực tế, khiến PO mentor phải tốn nhiều thời gian review và hướng dẫn lại từ đầu | BA Intern | Mất 2–3 tiếng/tuần để di chuột, kéo thả thủ công lại khung và mũi tên trên công cụ vẽ | Rule + Workflow — chuyển sang vẽ bằng code Mermaid và dùng AI sinh code |
+| 7 |Nguyễn Nam Anh | Báo cáo/tài liệu phân tích thiếu logic thực tế, khiến PO mentor tốn thời gian review và trả bài | PO mentor, BA Intern | Mất 2–3 ngày chờ review; bị PO yêu cầu rework từ đầu do tài liệu thiếu context hệ thống | Workflow — dùng AI làm Sparring Partner để phản biện trong bước Self-analyzing |
+| 8 | Trần Anh Thư | Onboarding nhân viên mới | Nhân viên mới, HR/quản lý trực tiếp | Câu hỏi lặp lại nhiều lần vì tài liệu không cá nhân hóa theo vị trí/phòng ban | Workflow rõ, nhưng cần kiểm chứng thêm |
+| 9 | Nguyễn Đức Tín | Khi bắt đầu một bài lab, sinh viên phải đọc và đối chiếu nhiều file hướng dẫn để tự tạo danh sách việc cần làm, mất khoảng 25–40 phút và vẫn có thể bỏ sót yêu cầu nộp bài | Sinh viên thực hiện bài lab | Thông tin và yêu cầu bị phân tán trong nhiều file, chưa có checklist tổng hợp rõ ràng | Vấn đề xảy ra ngay đầu quy trình, gây tốn thời gian, tăng áp lực và có nguy cơ làm hoặc nộp bài thiếu yêu cầu; phù hợp Workflow trích xuất yêu cầu + sinh viên xác nhận checklist |
+| 10 | Chu Thành Dũng | Tự động trích xuất nội dung slide để tạo Flashcards phục vụ tự học và ôn tập | Sinh viên; đội ngũ nội dung | Khó tổng hợp nhanh kiến thức từ slide để ôn trước các bài kiểm tra trắc nghiệm hằng tuần | Workflow — hữu ích cho sinh viên vì slide thường có cấu trúc tương đối rõ; rủi ro là hình ảnh, sơ đồ và công thức toán học phức tạp có thể bị mất hoặc diễn giải sai |
+| 11 | Dương Mạnh Phong | Tổng hợp notes rải rác để ôn tập hoặc làm bài | Bản thân — học viên cần ôn tập trước bài kiểm tra hoặc bài lab lớn | Phải đối chiếu ý trùng và ý thiếu giữa nhiều nguồn như slide, worksheet và ghi chép tay | Workflow rõ, lặp lại và đo được thời gian; dễ so sánh Rule/Workflow/Agent, nhưng tiêu chí “bản tổng hợp đủ tốt” còn khó định nghĩa chính xác |
+| 12 | Cao Nam Cường | Bàn giao ca trực Điều dưỡng | Điều dưỡng khoa nội trú, phụ trách khoảng 15–20 bệnh nhân/ca | Gõ lại diễn biến và chỉ số từ sổ tay vào HIS, tốn khoảng 45 phút/ca do ghi chép rải rác, chữ viết tắt và dữ liệu không cấu trúc | Workflow — AI hỗ trợ cấu trúc bản nháp, Điều dưỡng bắt buộc kiểm tra trước khi ghi vào HIS; tiềm năng giảm burnout, tăng ca không lương và sai sót do gõ nhầm thông số sinh hiệu |
+| 13 | Trần Đình Đăng (2A202601274) | Thông báo rải rác trên Gmail, Outlook, Discord dẫn đến bỏ sót tin quan trọng | Sinh viên, nhân viên làm việc với nhiều kênh | Phải chuyển qua lại giữa 3 nền tảng, mất 15-20 phút mỗi lần kiểm tra | Workflow |
 
 ## Bước 3.2 — Gom trùng / cluster
 
 | Cluster | Candidates included | Pattern chung | Ghi chú |
 |---|---|---|---|
-| A — Truy cập dữ liệu self-service | Yêu cầu số liệu Sales/Inventory | Business User cần dữ liệu nhưng phải phụ thuộc Data Analyst để chuyển câu hỏi thành SQL | Cluster đã được xác nhận |
-| B |  |  |  |
-| C |  |  |  |
-| D |  |  |  |
+| A — Truy cập dữ liệu self-service | #1 — Yêu cầu số liệu Sales/Inventory | Business User cần dữ liệu nhưng phải phụ thuộc Data Analyst để chuyển câu hỏi thành SQL | **PASS — không trùng**; chỉ candidate #1 giải bài toán truy vấn dữ liệu doanh nghiệp |
+| B — Hỗ trợ quyết định/công việc cá nhân | #2 — Kiểm tra lừa đảo; #3 — Quản lý thực phẩm; #4 — Lịch dùng thuốc | Hỗ trợ người dùng xử lý một tác vụ đời sống có rủi ro bỏ sót | **PASS — không trùng**; actor, workflow và outcome của ba candidate khác nhau |
+| C — Chuẩn hóa tài liệu và quy trình | #5 — Viết Use Case/URD/SRS; #6 — Vẽ sơ đồ bằng Mermaid; #7 — Phản biện tài liệu BA; #8 — Onboarding; #9 — Checklist bài lab | Chuyển thông tin rời rạc hoặc thiếu cấu trúc thành tài liệu/checklist dễ kiểm tra | #5, #8 và #9 **PASS — không trùng**. #6 và #7 cần làm rõ: mô tả candidate #6 nói “thiếu logic” nhưng bottleneck lại là thao tác vẽ; nếu #6 là “vẽ sơ đồ thủ công” thì hai candidate không trùng |
+| D — Tổng hợp nội dung học tập | #10 — Slide thành Flashcards; #11 — Tổng hợp notes rải rác | Biến nhiều nội dung học thành tài liệu ôn tập | **PASS — không trùng**; #10 tạo Flashcards từ slide, #11 tạo bản tổng hợp từ nhiều nguồn |
+| E — Bàn giao y khoa | #12 — Bàn giao ca trực Điều dưỡng | Cấu trúc ghi chép lâm sàng rời rạc trước khi nhập HIS | **PASS — không trùng**; domain, actor và rủi ro y khoa riêng biệt |
+
+Kết luận gom trùng:
+
+```text
+Không có hai candidate nào chắc chắn trùng hoàn toàn.
+
+Candidate #6 và #7 có cách viết ban đầu gần nhau,
+nhưng bottleneck/solution khác nhau:
+- #6: thao tác vẽ sơ đồ thủ công → Mermaid + AI sinh code;
+- #7: tài liệu thiếu logic/context → AI Sparring Partner.
+
+Nhóm cần sửa lại tên candidate #6 cho đúng bottleneck,
+sau đó có thể PASS hai candidate này là hai bài toán riêng.
+```
 
 ## Bước 3.3 — Shortlist
 
 | Candidate | Vì sao vào shortlist | Rủi ro / điều chưa rõ |
 |---|---|---|
 | Self-service Sales/Inventory query | Actor và workflow rõ; có handoff giữa nghiệp vụ và Data; có thể đo lead time, accuracy và ticket deflection; có thể pilot trên một data mart read-only | Baseline 2–3 ngày chưa có log; chưa biết tỷ lệ ticket đơn giản; accuracy 90% chưa được kiểm chứng |
-| Candidate 2 | Chưa cung cấp | Chưa có dữ liệu |
-| Candidate 3 | Chưa cung cấp | Chưa có dữ liệu |
+| Kiểm tra cuộc gọi/tin nhắn có dấu hiệu lừa đảo | Có actor rõ và bằng chứng tại Việt Nam; workflow kiểm tra hiện tại vẽ được; hậu quả mất tiền/lộ dữ liệu lớn; có thể pilot an toàn bằng các mẫu cảnh báo công khai | Chưa có baseline về thời gian xác minh và tỷ lệ quyết định sai; nguy cơ false negative tạo cảm giác an toàn giả; cần giới hạn AI chỉ giải thích dấu hiệu và bắt buộc xác minh qua kênh chính thức |
+| Tổng hợp checklist yêu cầu bài lab | Actor là sinh viên và bottleneck nằm ngay đầu workflow; có baseline sơ bộ 25–40 phút; dễ pilot bằng chính repository bài tập; có thể đo thời gian và số yêu cầu bị bỏ sót | Chưa có log để xác nhận baseline; có thể chỉ cần checklist chuẩn hoặc script theo rule; tiêu chí với yêu cầu định tính vẫn cần người học xác nhận |
 
 ## Bước 3.4 — Score để đồng thuận
 
 | Candidate | Actor rõ | Workflow rõ | Pain có evidence | Impact đo được | Làm trong lab | So sánh R/W/A được | Nhóm hiểu domain | Tổng |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Self-service Sales/Inventory query | 5 | 5 | 2 | 4 | 4 | 5 | 4 | 29/35 |
-| Candidate 2 |  |  |  |  |  |  |  |  |
-| Candidate 3 |  |  |  |  |  |  |  |  |
+| **Self-service Sales/Inventory query** | **5** | **5** | **3** | **5** | **4** | **5** | **5** | **32/35** |
+| Kiểm tra cuộc gọi/tin nhắn có dấu hiệu lừa đảo | 5 | 4 | 5 | 4 | 4 | 4 | 3 | 29/35 |
+| Tổng hợp checklist yêu cầu bài lab | 5 | 5 | 3 | 4 | 5 | 4 | 5 | 31/35 |
+
+Giải thích điểm:
+
+| Candidate | Lý do chấm điểm |
+|---|---|
+| **Self-service Sales/Inventory query — 32/35** | Actor và handoff giữa Business User/Data Analyst rất rõ; current workflow 5 bước và future workflow vẽ được; metric lead time, accuracy và ticket deflection đo được; so sánh No AI/Rule/Workflow/Agent rõ; nhóm hiểu domain. Trừ điểm vì baseline 2–3 ngày chưa được xác nhận bằng ticket log và pilot cần dữ liệu/schema phù hợp. |
+| Kiểm tra cuộc gọi/tin nhắn lừa đảo — 29/35 | Có evidence bên ngoài mạnh và impact lớn, nhưng outcome “phân loại đúng/an toàn” có rủi ro false negative; domain an toàn thông tin cần chuyên gia; khó kiểm chứng bằng người dùng thật trong lab mà vẫn bảo đảm an toàn. |
+| Tổng hợp checklist yêu cầu bài lab — 31/35 | Actor, workflow và khả năng làm trong lab rất rõ; nhóm có thể dùng chính repository để pilot. Tuy nhiên impact nhỏ hơn đề tài #1, baseline 25–40 phút chưa có log và Rule/checklist chuẩn có thể đã giải phần lớn problem mà không cần AI. |
+
+Kết luận score:
+
+```text
+Đề tài #1 đạt 32/35 và có điểm cao nhất.
+
+Khoảng cách với đề tài checklist bài lab chỉ là 1 điểm,
+vì checklist dễ làm trong lab hơn.
+Đề tài #1 thắng nhờ impact kinh doanh lớn hơn,
+metric đa chiều hơn và thể hiện rõ nhất bài học Rule / Workflow / Agent.
+```
 
 Candidate nhóm chọn:
 
@@ -84,17 +119,41 @@ Vì sao chọn:
 
 Vì sao không chọn các candidate còn lại:
 
+- **Kiểm tra cuộc gọi/tin nhắn lừa đảo — 29/35:** có evidence và impact lớn, nhưng false negative có thể khiến người dùng tin nhầm nội dung là an toàn. Domain an toàn thông tin cần dữ liệu cập nhật và chuyên gia kiểm chứng; khó pilot với người dùng thật trong lab mà không tạo thêm rủi ro.
+- **Tổng hợp checklist yêu cầu bài lab — 31/35:** rất dễ pilot và workflow rõ, nhưng impact nhỏ hơn đề tài #1. Checklist chuẩn hoặc script theo rule có thể giải phần lớn problem; các tiêu chí định tính vẫn cần sinh viên tự đọc và xác nhận.
+- **Quản lý thực phẩm và lịch dùng thuốc:** đều có actor rõ nhưng cần pilot theo dõi hành vi tối thiểu 14 ngày. Lịch dùng thuốc còn thuộc domain y tế và lõi reminder có thể giải bằng Rule mà không cần AI.
+- **Các candidate BA, onboarding và tài liệu:** có pain thực tế nhưng metric chất lượng như “đủ logic”, “đủ context” hoặc “đủ tốt” còn chủ quan. Candidate #6 cũng cần sửa lại mô tả vì problem nói tài liệu thiếu logic nhưng bottleneck lại là thao tác vẽ sơ đồ.
+- **Flashcards và tổng hợp notes:** phù hợp Workflow nhưng chất lượng đầu ra khó thống nhất, đặc biệt với hình ảnh, sơ đồ và công thức. Impact chủ yếu ở phạm vi học tập cá nhân và đã có nhiều công cụ tương tự.
+- **Bàn giao ca trực Điều dưỡng:** baseline 45 phút và impact tiềm năng cao, nhưng dữ liệu y tế nhạy cảm, sai số có thể ảnh hưởng an toàn bệnh nhân và tích hợp HIS phức tạp; không phù hợp để deep-dive/pilot nhanh trong lab.
+
+Kết luận:
+
 ```text
-Nhóm chưa cung cấp danh sách và lý do loại các candidate còn lại.
-Cần bổ sung từ biên bản pitch để hoàn chỉnh bằng chứng hội tụ.
+Nhóm không kết luận các candidate còn lại là problem kém.
+Nhóm chỉ chưa chọn chúng cho deep-dive lần này vì:
+- impact hoặc scope nhỏ hơn,
+- metric khó xác nhận hơn,
+- Rule/process fix có thể đã đủ,
+- hoặc rủi ro domain vượt khả năng kiểm soát trong lab.
 ```
 
 Nếu có disagreement, nhóm xử lý thế nào:
 
 ```text
-Chưa có thông tin disagreement.
-Đề xuất: so sánh candidate bằng cùng 7 tiêu chí trong bảng score,
-sau đó thảo luận các điểm chênh lệch thay vì chỉ vote.
+Nhóm dùng cùng 7 tiêu chí để chấm cả ba candidate shortlist,
+sau đó yêu cầu người chấm giải thích những tiêu chí lệch từ 2 điểm trở lên.
+
+Kết quả:
+- Text-to-SQL: 32/35;
+- Checklist bài lab: 31/35;
+- Kiểm tra lừa đảo: 29/35.
+
+Text-to-SQL được chọn vì có tổng điểm cao nhất,
+impact kinh doanh lớn và thể hiện rõ nhất Rule / Workflow / Agent.
+
+Điểm chưa đồng thuận về baseline 2–3 ngày không bị bỏ qua;
+nhóm chuyển nó thành giả thuyết cần kiểm chứng bằng ticket log,
+thay vì dùng làm lý do loại đề tài.
 ```
 
 ---
@@ -118,11 +177,13 @@ Không thể chứng minh trong 30 phút:
 
 | Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác | Nhóm sửa problem thế nào |
 |---|---:|---|---|---|
-| Quick Problem Card | Chưa rõ | Workflow 5 bước cụ thể; lead time được nhóm ước lượng 2–3 ngày | Chưa có log hoặc người được phỏng vấn | Xem 2–3 ngày là giả thuyết baseline, không phải kết quả đo |
-| Interview nghiệp vụ | Chưa thực hiện | Chưa có | Chưa có | Trong lab cần tối thiểu 1 người nghiệp vụ |
-| Interview Data Analyst | Chưa thực hiện | Chưa có | Chưa có | Trong lab cần tối thiểu 1 Data Analyst |
-| Survey / poll | Chưa thực hiện | Chưa có | Chưa có | Nếu có thời gian, khảo sát 5–10 người |
-| Ticket/query log | Chưa trích xuất | Chưa có | Chưa có | Trong lab xem 5–10 mẫu; sau lab mở rộng 30–50 mẫu |
+| Quick Problem Card của nhóm | 1 candidate | Workflow 5 bước và actor/handoff cụ thể; lead time được ước lượng 2–3 ngày | Chưa có log hoặc người được phỏng vấn | Xem 2–3 ngày là giả thuyết baseline, không phải kết quả đo |
+| Google Analyza case | 2 hệ thống thực tế | Một hệ thống cho sales force không nhất thiết biết code truy cập revenue/inventory database bằng hội thoại | Không công bố baseline 2–3 ngày hoặc target dưới 10 phút của nhóm | Xác nhận problem class, không dùng làm baseline nội bộ |
+| LinkedIn enterprise Text-to-SQL | Hơn 300 weekly users | Có nhu cầu self-service data discovery/query writing/debugging trong doanh nghiệp | Expert review chỉ ghi 53% response đúng hoặc gần đúng trên benchmark nội bộ | Giữ human review, semantic context và golden test; không mặc định accuracy 90% |
+| Interview nghiệp vụ | 0 — chưa thực hiện | Chưa có kết quả nội bộ | Chưa có kết quả nội bộ | Phỏng vấn tối thiểu 1 người trong lab, mở rộng 3 người sau lab |
+| Interview Data Analyst | 0 — chưa thực hiện | Chưa có kết quả nội bộ | Chưa có kết quả nội bộ | Phỏng vấn tối thiểu 1 người trong lab, mở rộng 2 người sau lab |
+| Survey / poll | 0 — chưa thực hiện | Chưa có kết quả nội bộ | Chưa có kết quả nội bộ | Khảo sát 5–10 người nếu tiếp cận được đúng actor |
+| Ticket/query log | 0 — chưa trích xuất | Chưa có baseline nội bộ | Chưa biết tỷ lệ A/B/C/D | Trong lab xem 5–10 mẫu; sau lab mở rộng 30–50 mẫu |
 
 ### Kịch bản validation 30 phút
 
@@ -166,10 +227,10 @@ Không thể chứng minh trong 30 phút:
 
 | Nguồn | Số người / mẫu | Lead time | Active time | Bước đau nhất | Tín hiệu phản bác | Nhóm sửa problem thế nào |
 |---|---:|---|---|---|---|---|
-| Interview nghiệp vụ |  |  | Không áp dụng |  |  |  |
-| Interview Data Analyst |  |  |  |  |  |  |
-| Survey / poll |  |  | Không đo |  |  |  |
-| Ticket/query log |  |  |  |  |  |  |
+| Interview nghiệp vụ | 0 — cần thực hiện | Cần đo từ lần gần nhất | Không áp dụng | Cần hỏi: chờ, làm rõ hay kiểm kết quả | Có thể problem thật là không biết dùng dashboard | Sửa actor/scope hoặc chuyển sang onboarding/search nếu tín hiệu phản bác mạnh |
+| Interview Data Analyst | 0 — cần thực hiện | Cần tách wait time | Cần đo phút/ticket | Cần hỏi: clarify, schema/KPI, SQL hay validation | Có thể phần lớn request thuộc nhóm C/D | Chỉ giữ self-service cho nhóm A/B |
+| Survey / poll | 0 — tùy điều kiện | Chọn bucket `<1h` đến `>3 ngày` | Không đo | Bước được chọn nhiều nhất | Có thể pain score dưới 3/5 | Hạ mức ưu tiên hoặc thu hẹp actor |
+| Ticket/query log | 0 — cần 5–10 mẫu trong lab | Tính từ timestamp mở/đóng | Tính từ work log nếu có | Đếm vòng hỏi lại và thời gian từng trạng thái | Có thể đa số đã có dashboard hoặc không lặp lại | Cập nhật tỷ lệ A/B/C/D và denominator metric |
 
 ### Quy tắc ra kết luận
 
